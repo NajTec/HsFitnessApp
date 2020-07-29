@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fitness-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: myfitnessapp-pod
+  template:
+    metadata:
+      labels:
+        app: myfitnessapp-pod
+    spec:
+      containers:
+      - name: myfitnessapp-container
+        image: hsfit.azurecr.io/fitnessapp:west
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"     
+        ports:
+        - containerPort: 80
+
